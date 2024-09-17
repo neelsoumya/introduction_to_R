@@ -29,6 +29,21 @@ print(surveys, n=num_rows, width = Inf)
 
 #ggplot(data =<DATA>, mapping=aes(<MAPPINGS>)) + <GEOM_FUNCTION>
   
+# data
+# mapping which variable goes where (column names)
+# geometry points, histograms, bar plots
 ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length )) + 
   geom_point()
+
+# some warnings
+
+
+# color
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length )) + 
+  geom_point(color='blue')
+
+# transparent
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length )) + 
+  geom_point(color='blue', alpha = 0.3)
+
 
