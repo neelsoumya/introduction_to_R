@@ -537,7 +537,10 @@ ggplot2::ggplot(data = year_varn_weight, mapping = aes(x=year,y=av_wt)) +
 
 # something aboiut heatmaps
 
-pheatmap::pheatmap()
+library(pheatmap)
+# TODO: challenge the following mgith crash
+# TODO: challenge fix it
+pheatmap::pheatmap(surveys_complete[,c('hindfoot_length','weight')])
 heatmap()
 
 
@@ -545,3 +548,6 @@ heatmap()
 # save files --------------------------------------------------------------
 
 write_csv(surveys_complete, file = 'surveys_complete.csv')
+
+
+# wrap up about 4:30 PM
