@@ -320,4 +320,116 @@ ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) 
 
 # After lunch break -------------------------------------------------------
 
+# meet after lunch 12:45 PM to 1:45 PM lunch
+
+
+surveys_complete %>%
+  summarize(mean_weight = mean(weight))
+
+surveys_complete %>%
+  count(sex, species)
+
+# create a new variable
+surveys_complete %>%
+    mutate(weight_kg = weight/100)
+# save it to the tibble
+surveys_complete <- surveys_complete %>%
+                      mutate(weight_kg = weight/100)
+
+# sort
+surveys_complete %>%
+  arrange(weight)
+
+surveys_complete %>%
+  arrange(weight, desc(hindfoot_length))
+
+# use group
+surveys_complete %>%
+  count(sex)
+
+# challenge 1
+# https://cambiotraining.github.io/intro-r/03-tidyverse.html#Challenge28
+
+surveys_complete %>% 
+  count(plot_type)
+
+# challenge 2
+surveys_complete %>%
+  count(sex, species)
+
+surveys_complete %>%
+  count(sex, species) %>%
+  arrange(species)
+
+surveys_complete %>%
+  count(sex, species) %>%
+  arrange(species, desc(n))
+  
+
+yearly_count <- surveys_complete %>%
+                    count(year, genus)
+
+# ggplot
+ggplot(data = yearly_count, mapping=aes(x=year, y=n)) + 
+  geom_point()
+
+# group by genus
+ggplot(data = yearly_count, mapping=aes(x=year, y=n, group=genus)) + 
+  geom_point()
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n, group=genus)) + 
+  geom_line()
+
+# color
+ggplot(data = yearly_count, mapping=aes(x=year, y=n, color=genus)) + 
+  geom_line()
+
+
+# new mean weight of females
+surveys_complete %>%
+  filter(sex == 'F')
+
+surveys_complete %>%
+  filter(sex == 'F') %>%
+  summarise(mean_weight_female = mean(weight))
+
+# now for males
+surveys_complete %>%
+  filter(sex == 'M') %>%
+  summarise(mean_weight_male = mean(weight))
+
+
+surveys_complete %>%
+  group_by(sex)
+
+# mean weight of each gender
+surveys_complete %>%
+  group_by(sex) %>%
+  summarise(mean_wt = mean(weight))
+
+
+
+# challenge ---------------------------------------------------------------
+
+# https://cambiotraining.github.io/intro-r/03-tidyverse.html#Challenge33
+
+surveys_complete %>%
+  group_by(species)
+
+surveys_complete %>%
+  group_by(species) %>%
+  summarise(mean_length = mean(hindfoot_length))
+  
+surveys_complete %>%
+  group_by(species) %>%
+  summarise(mean_length = mean(hindfoot_length), n=n())
+
+  
+# challenge 2
+surveys_complete %>%
+  group_by(species, year)
+
+surveys_complete %>%
+  group_by(species, year) %>%
+  summarise(mean_wt = mean(weight))
 
