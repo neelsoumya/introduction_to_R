@@ -540,3 +540,8 @@ ggplot2::ggplot(data = year_varn_weight, mapping = aes(x=year,y=av_wt)) +
 pheatmap::pheatmap()
 heatmap()
 
+
+
+# save files --------------------------------------------------------------
+
+write_csv(surveys_complete, file = 'surveys_complete.csv')
