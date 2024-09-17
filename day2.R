@@ -291,6 +291,18 @@ surveys %>%
 
 # time should be 12 PM. Break at 12:30 PM
 
+# challenge 1
+surveys_complete %>%
+  filter(year > 1995) %>%
+  select(species_id, weight, hindfoot_length, year, sex)
+
+surveys_complete %>%
+  filter(year > 1995) %>%
+  select(species_id, weight, hindfoot_length, year, sex) %>%
+  ggplot( mapping=aes(x=weight,y=hindfoot_length) ) + 
+    geom_point()
+
+# challenge 2
 temp_var <- surveys_complete %>%
               filter(year > 1995)
 
