@@ -551,3 +551,38 @@ write_csv(surveys_complete, file = 'surveys_complete.csv')
 
 
 # wrap up about 4:30 PM
+
+# optional challenege on box plot
+# Using the surveys_complete dataset, create a boxplot
+# for each year on the x-axis and weight in kg on the y-axis. Filter the dataset so that only recent observations (from 1995 onwards) are used. As before try to do all the operations using pipes, without creating variables.
+
+surveys_complete %>%
+  filter(year > 1995) %>%
+  mutate(wt_kg = weight/1000)
+
+# error
+surveys_complete %>%
+  filter(year > 1995) %>%
+  mutate(wt_kg = weight/1000) %>%
+  ggplot(mapping = aes(x = year, y = wt_kg)) + 
+  geom_boxplot()
+
+# error
+surveys_complete %>%
+  filter(year > 1995) %>%
+  mutate(wt_kg = weight/1000) %>%
+  mutate(as.factor(year)) %>%
+  ggplot(mapping = aes(x = year, y = wt_kg)) + 
+  geom_boxplot()
+
+
+# as.factor 
+surveys_complete %>%
+  filter(year > 1995) %>%
+  mutate(wt_kg = weight/1000) %>%
+  mutate(year = as.factor(year)) %>%
+  ggplot(mapping = aes(x = year, y = wt_kg)) + 
+    geom_boxplot()
+
+
+# EOL
