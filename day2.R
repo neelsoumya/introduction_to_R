@@ -90,3 +90,120 @@ basic_plot_surveys
 # error - will not work
 basic_plot_surveys <- basic_plot_surveys - geom_smooth()  
 
+
+
+# Challenge 1 day 2 -------------------------------------------------------
+
+# https://cambiotraining.github.io/intro-r/03-tidyverse.html#Challenge
+
+# TIP: please do not copy paste code just type it
+ggplot(data = surveys, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_density2d()
+
+# have everyone create a new scriot, write package name on top, etc.
+
+
+# Use of aes() ------------------------------------------------------------
+
+# ARE there other factors or features of the data
+
+# color is outside aesthetic
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length )) + 
+  geom_point(color='blue')
+
+# WRONG
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = sex )) + 
+  geom_point(color='blue')
+
+# RIGHT
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = sex )) + 
+  geom_point()
+
+# WORKS for categorical variables/factors
+#   let us see what happens if we use a numeric variable
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = year )) + 
+  geom_point()
+
+# shape
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, shape = sex )) + 
+  geom_point()
+
+# color and size from different features
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, shape = sex, color = taxa )) + 
+  geom_point()
+
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, shape = taxa, color = sex )) + 
+  geom_point()
+
+
+
+# global and local scoping ------------------------------------------------
+
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = sex )) + 
+  geom_point(color='blue')
+
+ggplot() + 
+  geom_point(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = sex ))
+
+# not passed to geom_smooth() it is local
+#     if passed to ggplot then global
+ggplot() + 
+  geom_point(data = surveys, mapping = aes( x = weight, y = hindfoot_length, color = sex )) + 
+  geom_smooth()
+
+
+
+# Exercise draw a boxplot -------------------------------------------------
+
+# https://ggplot2.tidyverse.org/reference/geom_boxplot.html
+# https://en.wikipedia.org/wiki/Box_plot#/media/File:Michelsonmorley-boxplot.svg
+
+ggplot(data = surveys, aes(x = weight, y = hindfoot_length)) + 
+  geom_boxplot()
+
+ggplot(data = surveys, aes(x = weight)) + 
+  geom_boxplot()
+
+ggplot(data = surveys, aes(x=sex)) + 
+  geom_boxplot()
+
+ggplot(data = surveys, aes(x=sex)) + 
+  geom_histogram()
+
+ggplot(data = surveys, aes(x=sex, y = hindfoot_length)) + 
+  geom_boxplot()
+
+# fill by sex
+ggplot(data = surveys, aes(x=sex, y = hindfoot_length, fill=sex)) + 
+  geom_boxplot()
+
+ggplot(data = surveys, aes(x=plot_type, y = weight, fill=sex)) + 
+  geom_boxplot()
+
+ggsave(filename = 'boxplot.png')
+# most recent
+
+plot_save = ggplot(data = surveys, aes(x=sex, y = hindfoot_length, fill=sex)) + 
+        geom_boxplot()
+
+ggsave(filename = 'boxplot_2.png', plot = plot_save)
+
+
+
+# select ------------------------------------------------------------------
+
+# base R
+surveys[,c('sex', 'weight', 'hindfoot_length')]
+
+# in tiudyverse
+select(surveys, sex, weight, hindfoot_length)
+
+# get column names
+colnames(surveys)
+
+# select column nmaes which have id in them
+select(surveys, contains('id'))
+
+# sequence
+select(surveys, record_id:plot_id)
+
