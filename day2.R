@@ -207,3 +207,105 @@ select(surveys, contains('id'))
 # sequence
 select(surveys, record_id:plot_id)
 
+
+# filter ------------------------------------------------------------------
+
+filter(surveys, year > 2000)
+
+# some data was filtered out
+
+# WRONG
+filter(surveys, taxa = 'Bird')
+
+temp = filter(surveys, taxa == 'Bird')
+
+temp$hindfoot_length
+
+select(temp, hindfoot_length)
+
+# All NAs !
+# That is why not plotted in 
+ggplot(data = surveys, mapping = aes( x = weight, y = hindfoot_length, shape = sex, color = taxa )) + 
+     geom_point()
+
+
+# remove missing values ---------------------------------------------------
+
+filter(surveys, !is.na(hindfoot_length))
+
+filter(surveys, !is.na(sex))
+
+filter(surveys, !is.na(sex), !is.na(hindfoot_length))
+
+drop_na(surveys, sex, hindfoot_length)
+
+# check all columns
+drop_na(surveys)
+
+surveys_complete = tidyr::drop_na(surveys)
+surveys_complete
+
+
+
+# Pipes -------------------------------------------------------------------
+
+# combine two or more commands
+temp = select(surveys, year, taxa, hindfoot_length) 
+
+#############################
+#   QUESTION
+#############################
+# will this command work?
+filter(temp, sex =='M')
+
+# pipe
+surveys %>% select()
+
+# data is already available so no need to specify in select()
+
+surveys %>% select(year, taxa, hindfoot_length)
+
+
+surveys %>% 
+  select(year, taxa, hindfoot_length) %>%
+  filter(taxa == 'Bird')
+
+# WRONG
+surveys %>% 
+  select(year, taxa, hindfoot_length) %>%
+  filter(sex == 'M')
+
+
+################################
+# QUESTION: Will this work?
+################################
+surveys %>% 
+  filter(sex == 'M') %>%
+  select(year, taxa, hindfoot_length)
+
+
+
+# Challenge pipes ---------------------------------------------------------
+
+# https://cambiotraining.github.io/intro-r/03-tidyverse.html#Challenge_1_-_pipes
+
+# time should be 12 PM. Break at 12:30 PM
+
+temp_var <- surveys_complete %>%
+              filter(year > 1995)
+
+ggplot(data = temp_var, mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point()
+ggplot(mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point(data = surveys_complete) + 
+  geom_point(data=temp_var, color='red')
+
+
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point() + 
+  geom_point(data=temp_var, color='red')
+
+
+# After lunch break -------------------------------------------------------
+
+
