@@ -503,9 +503,25 @@ theme_set(theme_bw())
 # use chatGPT/google/stackoverflow
 
 
-# Cahllenge  --------------------------------------------------------------
+# Challenge  --------------------------------------------------------------
+
+surveys_complete %>% 
+  group_by(species, year) %>%
+  summarise(av_wt = mean(weight))
 
 
+year_varn_weight <- surveys_complete %>% 
+                      group_by(species, year) %>%
+                      summarise(av_wt = mean(weight))
+
+ggplot2::ggplot(data = year_varn_weight, mapping = aes(x=year,y=av_wt)) + 
+            geom_line()
+
+ggplot2::ggplot(data = year_varn_weight, mapping = aes(x=year,y=av_wt)) + 
+  geom_line() + 
+  facet_wrap(facets = vars(species))
+
+# add theme
 
 # Challenge EXTRA ---------------------------------------------------------
 
