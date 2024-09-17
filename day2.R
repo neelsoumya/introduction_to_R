@@ -433,3 +433,67 @@ surveys_complete %>%
   group_by(species, year) %>%
   summarise(mean_wt = mean(weight))
 
+# facet_wrap()
+yearly_count <- surveys_complete %>%
+  count(year, genus)
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line()
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n, color=genus))  +
+  geom_line()
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  facet_wrap(facets = vars(genus))
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  facet_grid(rows = vars(genus))
+
+
+#ggplot(data = yearly_sex_count, mapping = aes(x=year, y=n)) + 
+#  geom_line() + 
+#  facet_grid(rows=vars(sex), cols=vars(genus))
+
+# labels
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n')
+
+# theme
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n') + 
+  theme_bw()
+
+
+# theme
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n') + 
+  theme_light()
+
+# set at top of project
+library(ggplot2)
+theme_set(theme_bw())
+
+
+# use chatGPT/google/stackoverflow
+
+# Challenge EXTRA ---------------------------------------------------------
+
+
+# NEW CHALLENGE QUESTION
+# figure out how to use the xkcd theme
+# use Google and use ChatGPT (because why not?!)
+
+
+
+# heatmaps EXTRA ----------------------------------------------------------
+
+
+# something aboiut heatmaps
+
+pheatmap::pheatmap()
+heatmap()
