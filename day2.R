@@ -474,6 +474,27 @@ ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
   labs(title = "title", x = 'year', y = 'n') + 
   theme_light()
 
+# theme star wars
+# challenge
+library(devtools)
+devtools::install_github('https://github.com/MatthewBJane/ThemePark')
+library(ThemePark)
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n') + 
+  theme_starwars()
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n') + 
+  theme_lordoftherings()
+
+ggplot(data = yearly_count, mapping=aes(x=year, y=n))  +
+  geom_line() + 
+  labs(title = "title", x = 'year', y = 'n') + 
+  theme_dune()
+
+
 # set at top of project
 library(ggplot2)
 theme_set(theme_bw())
