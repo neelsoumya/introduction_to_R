@@ -178,3 +178,31 @@ surveys_middle <- surveys[n_rows / 2, ]
 
 ## 4.
 surveys_head <- surveys[-(7:n_rows), ]
+
+
+# BREAK?
+
+#############
+# Factors
+#############
+
+# can encode Male as 1 and Female as 0?
+#     what problems
+#  what if M and F encoded
+
+
+surveys$sex
+
+surveys$sex <- factor(surveys$sex)
+
+surveys$sex
+
+summary(surveys$sex)
+
+# GREAT FUNCTION to get counts of each!
+table(surveys$species)
+table(surveys$sex)
+
+summary(surveys$species)
+summary(surveys$sex)
+
