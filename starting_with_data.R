@@ -206,3 +206,112 @@ table(surveys$sex)
 summary(surveys$species)
 summary(surveys$sex)
 
+
+# levels
+# Once created, factors can only contain a pre-defined set of values
+# , known as levels. Factors are stored as integers associated with 
+# labels and they can be ordered or unordered. While factors look (and often behave) like character vectors, they are actually treated as integer vectors by R. 
+# So you need to be very careful when treating them as strings.
+
+sex <- factor(c("Male","Female"))
+sex
+
+sex_reordered <- factor(c("Male","Female"), levels = c("Male","Female")) 
+sex_reordered
+
+# maybe important in how you want to plot
+
+##########################
+# CHALLENGE
+##########################
+# 1. Change the columns taxa and genus in the surveys data frame into a factor.
+
+surveys$taxa <- factor(surveys$taxa)
+
+summary(surveys$taxa)
+
+table(surveys$taxa)
+
+levels(surveys$taxa)
+
+# Quick plot
+boxplot(surveys$hindfoot_length ~ surveys$taxa)
+
+# How to reorder in plot?
+
+##########################
+# Challenge:
+# how to reorder them?
+##########################
+
+
+#########################
+# CHALLENGE
+#########################
+
+# why Rabbit have no hindfoot? How would you check?
+
+
+
+
+
+
+
+
+
+
+
+
+
+surveys[surveys$taxa == "Rabbit",]
+
+
+
+#####################
+# OPTIONAL
+#   renaming factors
+#####################
+
+plot(sex)
+plot(surveys$sex)
+
+levels(surveys$sex)
+
+levels(surveys$sex)[1]
+
+levels(surveys$sex)[1] <- "unknown"
+
+plot(surveys$sex)
+
+#####################
+# CHALLENGE
+#   reorder
+#####################
+
+######################
+# CHALLENGE
+# Rename “F” and “M” to “female” and “male” respectively.
+# Now that we have renamed the factor level to “undetermined”, can you recreate the barplot such that “undetermined” is last (after “male”)?
+######################
+
+levels(surveys$sex)
+levels(surveys$sex)[1]
+levels(surveys$sex)[2] <- "Female"
+levels(surveys$sex)[3] <- "Male"
+
+surveys$sex <- factor(surveys$sex, levels = c("Female", "Male", "unknown") )
+
+plot(surveys$sex)
+
+
+# delete workspace
+
+# delete plots
+
+# save plots
+
+# END!
+
+# QUESTIONS?
+
+
