@@ -120,6 +120,25 @@ height_fixed
 
 #na.omit()
 
+> animals <- c("mouse", "rat", "dog", "cat")
+> 
+  > animals(3)
+Error in animals(3) : could not find function "animals"
+> animals[3]
+[1] "dog"
+> animals[3,2]
+Error in animals[3, 2] : incorrect number of dimensions
+> 
+  > heights <- c(2, 4, 4, NA, 6)
+> 
+  > sum(heights)
+[1] NA
+> !is.na(heights)
+[1]  TRUE  TRUE  TRUE FALSE  TRUE
+> heights[!is.na(heights)]
+[1] 2 4 4 6
+> sum(heights[!is.na(heights)])
+[1] 16
 
 # After lunch day 1\ ------------------------------------------------------
 
