@@ -1,9 +1,29 @@
 # basic -------------------------------------------------------------------
 
+# this is a comment
+
 # find info
 ?sum
 
 x  = 1.3
+
+?sqrt
+
+sqrt(1000)
+sqrt(-100)
+
+sqrt('word')
+sqrt(119.78)
+
+sqrt(1.3)
+
+sqrt(x)
+
+sqrt(x=x)
+
+round(31.4)
+
+round(x = 31.4)
 
 # concept of function
 round(x = x)
@@ -23,6 +43,10 @@ z = x + y
 p = 'hello'
 
 q = TRUE
+
+1 == 2
+
+(1 == 2) & (1 == 1) | (17 == 12)
 
 weight = 50,60,70 # this wont work
 # combine values c for concatenate
