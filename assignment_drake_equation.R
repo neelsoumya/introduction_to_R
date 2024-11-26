@@ -59,11 +59,15 @@ simulate_drake <- function(n = 1000) {
 # Generate simulation data
 drake_simulations <- simulate_drake()
 head(drake_simulations)
-
-
+################
+# Simple plots
+################
+hist(drake_simulations$N)
 
 # Load ggplot2 for visualization
 library(ggplot2)
+
+# anything wrong?
 
 # Histogram of civilizations
 ggplot(drake_simulations, aes(x = N)) +
