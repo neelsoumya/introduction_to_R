@@ -69,6 +69,9 @@ library(ggplot2)
 
 # anything wrong?
 
+# create a shiny web app to explore this
+#   what parameters would you change?
+
 # Histogram of civilizations
 ggplot(drake_simulations, aes(x = N)) +
   geom_histogram(binwidth = 10, fill = "skyblue", color = "black") +
