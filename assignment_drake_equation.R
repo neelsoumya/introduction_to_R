@@ -33,6 +33,11 @@ head(fc_data)
 # save data frame
 write.csv(x = fc_data, file = "drake_dummy_data.csv", row.names = FALSE)
 
+# simpler way
+f_c = runif(n=100, min = 0, max = 1)
+
+write.csv(x = f_c, file = "f_c_values.csv", row.names = FALSE)
+
 # Function to simulate the Drake Equation
 simulate_drake <- function(n = 1000) {
   # Randomly sample parameter values
