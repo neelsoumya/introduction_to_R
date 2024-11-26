@@ -86,3 +86,11 @@ ggplot(drake_simulations, aes(x = f_c, y = N)) +
        x = "Fraction of Planets with Advanced Civilizations (f_c)",
        y = "Number of Communicative Civilizations (N)") +
   theme_minimal()
+
+# Assignment Ideas
+# Analysis Task: Ask students to analyze how each parameter influences 𝑁
+# N, with plots and summary statistics.
+# Exploration Task: Have students modify parameters like 
+#𝑅* or𝑓_p
+# to explore different outcomes.
+# Creative Challenge: Students can tweak the code to simulate new scenarios or incorporate other cosmic phenomena.
