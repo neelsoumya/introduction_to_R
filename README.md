@@ -11,7 +11,7 @@ https://sites.google.com/cam.ac.uk/pols02jdyu58fyhskjfheyd7go9ij/home
 
 https://github.com/TanFuMiao/Drake_Eqn
 
-By Fu Mia Tan
+By Fu Miao Tan
 
 # Contact
 
