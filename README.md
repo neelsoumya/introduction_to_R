@@ -7,3 +7,12 @@ https://cambiotraining.github.io/intro-r/02-starting-with-data.html
 https://sites.google.com/cam.ac.uk/pols02jdyu58fyhskjfheyd7go9ij/home
 
 
+# Challenge Assignment
+
+https://github.com/TanFuMiao/Drake_Eqn
+
+By Fu Mia Tan
+
+# Contact
+
+Soumya Banerjee
