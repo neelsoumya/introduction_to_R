@@ -1,7 +1,7 @@
 # Starting with data
 
-#download.file(url="https://ndownloader.figshare.com/files/2292169",
-#              destfile = "data/portal_data_joined.csv")
+download.file(url="https://ndownloader.figshare.com/files/2292169",
+              destfile = "data/portal_data_joined.csv")
 
 
 # check directory exists
@@ -31,6 +31,11 @@ str(surveys)
 # as a data scientist, you are spending 80% of your time doing this
 
 dim(surveys)
+
+x <- dim(surveys)
+x[1]
+x[2]
+
 nrow(surveys)
 ncol(surveys)
 
@@ -61,13 +66,23 @@ surveys[210000,1]
 
 surveys[30,]
 
+surveys$month
+
 # name indexing
 surveys$year
 
+surveys$month
+
+surveys[,"month"]
+
 surveys[,"year"]
 
-surveys[,"year1"]
+year1 = -1
+q = surveys[,year1] # I ajm saving this in  dat afrmae so tjat I can do 
 
+colnames(q)
+colnames(surveys)
+dim(q)
 surveys[1:3, c("year", "species")]
   
 surveys[surveys$species == "merriami",]
@@ -75,6 +90,13 @@ surveys[surveys$species == "merriami",]
 surveys[surveys$species == "merriami"]
 
 surveys$species == "merriami"
+
+xx = surveys$species == "merriami" & surveys$month == 12
+
+
+surveys[surveys$species == "merriami" && surveys$month == 12,]
+
+surveys[xx,]
 
 ###########################
 # EXERCISE
@@ -193,6 +215,10 @@ surveys_head <- surveys[-(7:n_rows), ]
 
 surveys$sex
 
+factor(surveys$sex)
+
+surveys$sex <- factor(surveys$sex)
+
 surveys$sex <- factor(surveys$sex)
 
 surveys$sex
@@ -202,6 +228,8 @@ summary(surveys$sex)
 # GREAT FUNCTION to get counts of each!
 table(surveys$species)
 table(surveys$sex)
+
+plot(surveys$sex, surveys$hindfoot_length)
 
 summary(surveys$species)
 summary(surveys$sex)
@@ -215,6 +243,8 @@ summary(surveys$sex)
 
 sex <- factor(c("Male","Female"))
 sex
+
+factor(c("Male","Female"), levels = c("Male","Female"))
 
 sex_reordered <- factor(c("Male","Female"), levels = c("Male","Female")) 
 sex_reordered
