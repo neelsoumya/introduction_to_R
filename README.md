@@ -25,6 +25,12 @@ https://github.com/TanFuMiao/Drake_Eqn
 
 By Fu Miao Tan
 
+# Acknowledgement
+
+All material adapted from:
+
+https://cambiotraining.github.io/intro-r/00-getting-started.html
+
 # Contact
 
 Soumya Banerjee
