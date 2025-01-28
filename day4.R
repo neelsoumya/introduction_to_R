@@ -106,6 +106,9 @@ surveys_complete %>%
 surveys_complete %>%
   count(sex, species)
 
+surveys_complete %>%
+  count(sex, species)
+
 ################################
 # Challenge
 ################################
@@ -189,6 +192,21 @@ surveys_complete %>%
   summarise(mean_weight_by_sex_species=mean(weight), max_weight = max(weight), hind_max = max(hindfoot_length)) %>%
   count(species_id)
 
+# use n()
+surveys_complete %>%
+  group_by(species_id) %>%
+  summarise(
+    mean_hindfoot_length = mean(hindfoot_length),
+    min_hindfoot_length = min(hindfoot_length),
+    max_hindfoot_length = max(hindfoot_length),
+    n = n()
+  )
+
+surveys_complete %>%
+  group_by(year) %>%
+  filter(weight == max(weight)) %>%
+  select(year, genus, species_id, weight) %>%
+  arrange(year)
 
 # use arrange(
 
