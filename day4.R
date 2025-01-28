@@ -14,6 +14,10 @@
 
 library(tidyverse)
 
+setwd("~/soumya_cam_mac/teaching/introduction_to_R")
+
+surveys <- read_csv("data/portal_data_joined.csv")
+
 # R Base
 surveys[surveys$species=="albigula" &
           surveys$year==1977, ]
@@ -22,9 +26,6 @@ surveys[surveys$species=="albigula" &
 # tidyverse
 filter(surveys, species == 'albigula' & year == 1977)
 
-setwd("~/soumya_cam_mac/teaching/introduction_to_R")
-
-surveys <- read_csv("data/portal_data_joined.csv")
 
 head(surveys)
 
