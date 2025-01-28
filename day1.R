@@ -23,9 +23,18 @@ sqrt(x=x)
 
 sqrt(x = 13)
 
+y = TRUE
+
 vs.
 
-sqrt(x <- 13)
+x <- 13
+
+sqrt(13)
+x = 16
+sqrt(x = 16)
+
+?sqrt
+sqrt(x <- 11)
 # check what happened to x?
 
 round(31.4)

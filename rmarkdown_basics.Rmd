@@ -1,0 +1,81 @@
+---
+title: "basics_rmarkdown"
+output:
+  html_document:
+    df_print: paged
+date: "`r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Basics
+
+### Heading 3
+
+# Heading 1
+
+Inline text I like to __ramble__ about `R` \
+
+**More than 70% of researchers have tried and failed to reproduce another scientist's experiments** \
+
+*Nature*
+
+Please see our latest methods [link](#methods-section).
+
+## Data and Methods {#methods-section}
+
+We have used a very fancy AI model. 
+
+## Software
+
+All our resources are available here:
+
+[link](https://cambiotraining.github.io/reproducibility-training)
+
+I like to reference myself [^1]
+
+[^1]: This will be a minor footnote in history.
+
+## Lists
+
+1. Item 1
+2. Item 2
+    a. Subitem
+    b. Subitem 2
+    
+* Data
+* Methods
+* Results
+    * Main results
+    * Secondary results
+    
+### Checklists
+- [ ] not written ethics section
+- [x] outline done
+
+## Pretty Plots
+
+![Image](ima)
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+setwd("~/soumya_cam_mac/teaching/intro_to_R/introduction_to_R")
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
