@@ -13,12 +13,22 @@
 # https://cambiotraining.github.io/intro-r/03-tidyverse.html
 
 library(tidyverse)
+install.packages('tidyverse')
 
 setwd("~/soumya_cam_mac/teaching/introduction_to_R")
 
 surveys <- read_csv("data/portal_data_joined.csv")
 
-# R Base
+# R Base merriami
+
+surveys$species == "merriami"
+
+surveys[ surveys$species == "merriami" & surveys$year == 1997  ,]
+
+surveys[surveys$species == "merriami",]
+
+surveys[surveys$species == "merriami" & ]
+
 surveys[surveys$species=="albigula" &
           surveys$year==1977, ]
 
@@ -29,7 +39,7 @@ filter(surveys, species == 'albigula' & year == 1977)
 
 head(surveys)
 
-tidyr::drop_na(surveys, weight, year)
+x <- tidyr::drop_na(surveys, weight, year)
 
 
 # drop any NAs in any column
@@ -39,17 +49,30 @@ surveys_complete <- tidyr::drop_na(surveys)
 #Challenge 1 - pipes
 #Subset the surveys_complete data to keep only the species_id, weight, hindfoot_length, year and sex columns and the animals collected on and after 1995. Then plot a scatter plot of weight (x-axis) against hindfoot_length (y-axis) using this transformed dataset. Do all the above using pipes, without creating any variables.
 #Answer 
+
+select(surveys_complete, species_id, weight, hindfoot_length, year, sex)
+
+surveys_complete %>%
+  #select columns
+  select(species_id, weight, hindfoot_length, year, sex)
+
+
 surveys_complete %>%
   #select columns
   select(species_id, weight, hindfoot_length, year, sex) %>%
   #filter rows
   filter(year >= 1995) %>%
+  
+  ggplot(mapping = aes( x=weight, y=hindfoot_length)) + geom_point()
+  
+  
   #plot transformed data
   ggplot(mapping=aes(x=weight, y=hindfoot_length)) +
   geom_point()
 
 
-#Challenge 2 - plotting subset with different colour
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length) ) + geom_point()
+ #Challenge 2 - plotting subset with different colour
 #Plot all the animals in the surveys_complete dataset as weight (x-axis) against hindfoot_length (y-axis). Use the dataset created above which contains only the animals that were collected on and after 1995 and highlight these points in red in the plot.
 
 #Answer 
