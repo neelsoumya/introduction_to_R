@@ -21,6 +21,10 @@ Available in PDF and Word documents in this directory.
 
 # Challenge Assignment
 
+Create a shiny app to explore the Drake equation
+
+https://sb2333medschl.shinyapps.io/drake_shiny/
+
 https://github.com/TanFuMiao/Drake_Eqn
 
 By Fu Miao Tan
