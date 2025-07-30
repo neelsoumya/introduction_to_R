@@ -116,3 +116,129 @@ surveys_complete %>%
   filter(year >= 1995)
 
 
+##########################
+# advanced visualization
+##########################
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length)) + 
+  geom_point()
+
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length)) + 
+  geom_point(alpha = 0.3)
+
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length)) + 
+  geom_point(alpha = 0.3, color = "blue", shape=6)
+
+# colour based on plot_type
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length, colour = plot_type)) + 
+  geom_point()
+
+# colour in both aes() and geom_point()
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length, color = plot_type)) + 
+  geom_point(color = "green")
+
+ggplot(data = surveys_complete, mapping = aes(x=weight, y=hindfoot_length, color = "blue")) + 
+  geom_point(color = "green")
+
+
+
+ggplot(surveys_complete, mapping = aes(x = genus, y=weight)) + 
+  geom_boxplot()
+
+
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length)) + 
+  geom_point() + 
+  geom_violin()
+  
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length)) + 
+  geom_violin() + 
+  geom_point() 
+  
+
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length)) + 
+  geom_point() + 
+  geom_smooth()
+
+
+################
+# facet wrap
+################
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length, color = plot_type)) + 
+  geom_point() + 
+  facet_wrap(facets = vars(plot_type))
+
+
+#########################
+# add a variable
+#########################
+surveys_complete$year 
+surveys_complete$year > 2000
+
+surveys_complete$after_2000 <- surveys_complete$year > 2000
+
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length)) + 
+  geom_point()
+
+ggplot(data = surveys_complete, mapping = aes(x=weight,y=hindfoot_length, colour = after_2000)) + 
+  geom_point()
+
+#star wars theme
+#drake package XX
+#friday plots present
+
+###########################
+# more advanced plots
+# colouring by a variable
+###########################
+
+library(tidyverse)
+surveys_complete %>%
+  mutate(is_ox = (species_id == "OX") ) %>%
+  ggplot(mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point( aes(colour = "red"))
+
+surveys_complete %>%
+  mutate(is_ox = (species_id == "OX") ) %>%
+  arrange(is_ox) %>%
+  ggplot(mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point( aes(colour = is_ox))
+
+ggsave(filename = "my_first_color_ggplot.png", )
+
+
+surveys_complete$is_ox <- surveys_complete$species_id == "OX"
+
+
+
+# assign ggplot to a variable
+p1 <- ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) + 
+  geom_point()
+
+p1
+
+ggsave(filename = "ggplot.png", plot = p1)
+
+ggsave(filename = "ggplot.jpg", plot = p1)
+
+# themes
+p1 + theme_bw()
+
+p1 + theme_classic()
+
+p1 + theme_minimal()
+
+devtools::install_github("MatthewBJane/ThemePark")
+library(ThemePark)
+
+p1 + ThemePark::theme_starwars()
+p1 + ThemePark::theme_alien()
+# Star Wars Themed ggplot2 Theme
+# This script provides a complete Star Wars theme for your ggplot visualizations
+
+ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) +
+  geom_point(aes(colour = plot_type)) +
+  scale_colour_brewer(palette = "Dark2")
+
+
+p1 <- p1 + labs(title = "My ggplot")
+
+p1
