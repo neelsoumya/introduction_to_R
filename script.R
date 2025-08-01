@@ -242,3 +242,80 @@ ggplot(data = surveys_complete, mapping = aes(x = weight, y = hindfoot_length)) 
 p1 <- p1 + labs(title = "My ggplot")
 
 p1
+
+0. one bad visoualization
+1. shiny
+2. rmarkdown
+
+library(ggplot2)
+library(dplyr)
+
+
+# Simple gganimate example with Gapminder data
+# This script creates animated visualizations of life expectancy vs GDP per capita
+
+# ============================================================================
+# 1. INSTALL AND LOAD PACKAGES
+# ============================================================================
+
+# Install packages if not already installed
+if (!require(gapminder)) install.packages("gapminder")
+if (!require(ggplot2)) install.packages("ggplot2")
+if (!require(gganimate)) install.packages("gganimate")
+if (!require(dplyr)) install.packages("dplyr")
+
+
+
+# Load packages
+install.packages("gapminder")
+library(gapminder)
+library(tidyverse)
+#library(ggplot2)
+#library(gganimate)
+#library(dplyr)
+head(gapminder)
+
+# Summary statistics
+summary(gapminder)
+
+# ============================================================================
+# 3. CREATE SCATTER PLOT
+# ============================================================================
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
+
+# more advanced (color by continent)
+
+ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, 
+                                       size = pop, color = continent)) +
+  geom_point(alpha = 0.7)
+
+
+
+# Basic animated scatter plot
+animated_plot <- ggplot(gapminder, aes(x = gdpPercap, y = lifeExp, 
+                                       size = pop, color = continent)) +
+  geom_point(alpha = 0.7) +
+  scale_size_continuous(range = c(2, 12)) +
+  scale_x_log10() +
+  labs(title = "Life Expectancy vs GDP per Capita",
+       subtitle = "Year: {frame_time}",
+       x = "GDP per Capita (log scale)",
+       y = "Life Expectancy (years)",
+       size = "Population",
+       color = "Continent") +
+  theme_minimal() +
+  theme(plot.title = element_text(size = 16, face = "bold"),
+        plot.subtitle = element_text(size = 14),
+        axis.title = element_text(size = 12),
+        legend.title = element_text(size = 12)) +
+  transition_time(year) +
+  ease_aes("linear")
+
+# Save the animation
+print("💾 Saving animation...")
+anim_save("gapminder_animation.gif", animated_plot, 
+          duration = 10, fps = 10, width = 800, height = 600)
+
+print("✅ Animation saved as 'gapminder_animation.gif'")
