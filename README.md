@@ -15,6 +15,8 @@ https://sites.google.com/cam.ac.uk/pols02jdyu58fyhskjfheyd7go9ij/home
 
 `day2.R` and `day4.R` and `tidyverse.R`: more advanced material on using ggplot and tidyverse
 
+`script.R` : also basic R to advanced plotting
+
 # Notes
 
 Available in PDF and Word documents in this directory.
